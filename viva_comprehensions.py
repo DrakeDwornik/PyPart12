@@ -9,40 +9,38 @@ class Parity(enum.Enum):
 
 def gen_list(start: int, stop: int, parity: Parity) -> List[int]:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
+    returns a list of either even or odd numbers from start (inclusive) to stop (exclusive)
 
-    :param start:
-    :param stop:
-    :param parity:
-    :return:
+    :param start: integer from which to start the list
+    :param stop: the end of the list (exclusive)
+    :param parity: an ENUM of either EVEN or ODD to choose the numbers from
+    :return: a list of the appropriate range
     """
-    pass
 
+    result = [n for n in range(start, stop) if n % 2 == (parity.value + 1) % 2]
+    return(result)
 
 def gen_dict(start: int, stop: int, strategy: Callable) -> Dict:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
+    creates a dict with the keys in range start (inclusive) to stop (exclusive), the strategy is applied to each key
+    to produce the value
 
 
-    :param start:
-    :param stop:
-    :param strategy:
-    :return:
+    :param start: integer for the first key in range
+    :param stop: integer for the last key in range (exclusive)
+    :param strategy: lambda to apply to the keys
+    :return: dictionary of the result
     """
-    pass
+    result = {k: strategy(k) for k in range(start, stop)}
+    return result
 
 
 def gen_set(val_in: str) -> Set:
     """
-    Oh no some evil developer decided not to write docstrings. Maybe you can use the test cases to decipher
-    what this method was supposed to do. Hey if you do, maybe you could do some good in this world by
-    updating this here docstring to something useful.
+    returns a set of the lower case letters in val_in converted to uppercase
 
-    :param val_in:
-    :return:
+    :param val_in: a string
+    :return: the returned set
     """
-    pass
+    result = {v.upper() for v in val_in if v.islower()}
+    return result
